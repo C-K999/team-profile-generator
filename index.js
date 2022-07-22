@@ -4,6 +4,7 @@ const inquirer = require('inquirer');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+const HTML_Template = require('./src/HTML_Template');
 
 const memberList = [];
 
@@ -111,6 +112,9 @@ const output = data => {
 
 addManager()
   .then(add_Employee)
+  .then(memberList => {
+    return HTML_Template(memberList);
+  })
   .then(pageHTML => {
     return output(pageHTML);
   })
